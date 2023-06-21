@@ -1,7 +1,7 @@
 import Header from "../components/header"
 import Sidebar from "../components/sidebar"
 
-export default function Home() {
+export default function Home({ recentPosts }) {
     // get most recent post*
     return (
         <>
@@ -13,7 +13,7 @@ export default function Home() {
                     <p>(first paragraph)</p>
                     <p>(link to view the rest of the post)</p>
                 </div>
-                <Sidebar />
+                <Sidebar recenPosts={recentPosts} />
 
             </main>
         </>
