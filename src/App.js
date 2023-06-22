@@ -6,11 +6,17 @@ import Error from './pages/errorPage';
 import Post from './pages/postPage';
 import AllPosts from './pages/allPostsPage';
 
+// placeholder posts
+const placeholderPosts = [
+  { _id: 100, title: 'Fetching post 1', body: 'Placeholder post content' },
+  { _id: 101, title: 'Fetching post 2', body: 'This post is not real it only seems so' }
+];
+
 function App() {
 
-  const [recentPosts, setRecentPosts] = useState([]);
+  const [recentPosts, setRecentPosts] = useState([...placeholderPosts]);
 
-  // get 5 most recent posts*
+  // get 5 most recent posts
   useEffect(() => {
     async function getPosts() {
       try {
@@ -22,8 +28,6 @@ function App() {
           console.log(data.error);
           return;
         }
-
-        console.log(data);
 
         setRecentPosts([...data]);
 
