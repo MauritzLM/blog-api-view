@@ -2,6 +2,8 @@ import Sidebar from "../components/sidebar"
 import CommentsContainer from "../components/comments"
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
+import parse from "html-react-parser";
+import dayjs from "dayjs";
 
 export default function Post({ recentPosts }) {
     const { id } = useParams();
@@ -26,6 +28,9 @@ export default function Post({ recentPosts }) {
             }
         };
 
+        // scroll to top 
+        window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+
         getPost();
     }, [commentAdded, id]);
 
@@ -37,14 +42,13 @@ export default function Post({ recentPosts }) {
             </header>
             <main>
                 <article>
-                    <h1>{post.title} </h1>
-                    <p>written by {post.author}</p>
+                    <h1>{post ? post.title : 'Fetching title'} </h1>
+                    <p>written by {post ? post.author : 'Fetching author'}</p>
+                    <p>{post ? dayjs(post.date).format("D MMM YYYY") : 'Fetching date'}</p>
 
                     {post.body?.split("\n").map((paragraph, index) => {
-                        return <p key={index + 1}>{paragraph}</p>
+                        return parse(`<p key=${index + 1}>${paragraph}</p>`)
                     })}
-
-                    {/* <p>{post.body}</p> */}
                     <CommentsContainer postComments={post.comments} commentAdded={commentAdded} setCommentAdded={setCommentAdded} />
                 </article>
                 <Sidebar recenPosts={recentPosts} />
