@@ -30,8 +30,10 @@ function CommentForm({ id, commentAdded, setCommentAdded }) {
     const [commentFormValues, setCommentFormValues] = useState({ ...initialFormValues });
 
     // form error messages
-    const initialErrorValues = { author: "", body: "", question: "" };
-    const [errorValues, setErrorValues] = useState({ ...initialErrorValues })
+
+    const [authorError, setAuthorError] = useState("");
+    const [bodyError, setBodyError] = useState("");
+    const [questionError, setQuestionError] = useState("");
 
     // handle new comment post*
     async function handleNewComment(event) {
@@ -56,22 +58,25 @@ function CommentForm({ id, commentAdded, setCommentAdded }) {
             if (data.errors) {
                 data.errors.forEach(err => {
                     if (err.path === "commentAuthor") {
-                        setErrorValues({ ...errorValues, author: err.msg });
+                        setAuthorError(err.msg);
                     }
                     if (err.path === "commentBody") {
-                        setErrorValues({ ...errorValues, body: err.msg });
+                        setBodyError(err.msg);
                     }
                     if (err.path === "securityQuestion") {
-                        setErrorValues({ ...errorValues, question: err.msg });
+                        setQuestionError(err.msg)
                     }
                 });
                 return;
             };
 
-            // success reload page?
-            console.log(data);
-            setErrorValues({ ...initialErrorValues });
+            // reset form values state 
+            setAuthorError("");
+            setBodyError("");
+            setQuestionError("");
             setCommentFormValues({ ...initialFormValues });
+
+            // comment added state change to rerender post
             setCommentAdded(commentAdded + 1);
         }
         catch (error) {
@@ -80,22 +85,22 @@ function CommentForm({ id, commentAdded, setCommentAdded }) {
     };
     return (
         <>
-            <form className="comment-form" method="post" onSubmit={(e) => handleNewComment(e)}>
+            <form className="comment-form" method="post" onSubmit={(e) => handleNewComment(e)} noValidate>
                 <h3>Add new Comment</h3>
 
                 <label htmlFor="commentAuthor">enter your name
-                    <input type="text" name="commentAuthor" value={commentFormValues.author} onChange={(e) => setCommentFormValues({ ...commentFormValues, author: e.target.value })}></input>
-                    <span>{errorValues.author}</span>
+                    <input type="text" name="commentAuthor" value={commentFormValues.author} onChange={(e) => setCommentFormValues({ ...commentFormValues, author: e.target.value })} />
+                    <span>{commentFormValues.author ? "" : authorError}</span>
                 </label>
 
                 <label htmlFor="commentBody">Your comment
                     <textarea name="commentBody" value={commentFormValues.body} onChange={(e) => setCommentFormValues({ ...commentFormValues, body: e.target.value })} />
-                    <span>{errorValues.body}</span>
+                    <span>{commentFormValues.body.length < 10 ? bodyError : ""}</span>
                 </label>
 
                 <label htmlFor="securityQuestion">What is 13 - 8 ? (security question)
                     <input type="text" name="securityQuestion" value={commentFormValues.question} onChange={(e) => setCommentFormValues({ ...commentFormValues, question: e.target.value })} />
-                    <span>{errorValues.question}</span>
+                    <span>{questionError}</span>
                 </label>
 
                 <button>submit</button>
