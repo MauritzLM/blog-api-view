@@ -25,7 +25,7 @@ export default function AllPosts() {
     }, []);
 
     // render list of posts
-    const postsDisplay = posts.map(post => {
+    const postsDisplay = posts?.map(post => {
         return <li key={post._id}>
             <Link to={`/posts/${post._id}`}>{post.title}</Link>
             <p >by {post.author}</p>
