@@ -1,10 +1,10 @@
 
 import { Link } from "react-router-dom";
 
-export default function Sidebar({ recenPosts }) {
+export default function Sidebar({ recentPosts }) {
 
     // create list item for each recent post*
-    const postList = recenPosts?.map((post, index) => {
+    const postList = recentPosts?.map((post, index) => {
         return <li key={post._id + "-" + index}><Link to={`/posts/${post._id}`}>{post.title}</Link></li>
     })
 
