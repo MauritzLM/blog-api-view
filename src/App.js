@@ -5,11 +5,11 @@ import Home from './pages/homePage';
 import Error from './pages/errorPage';
 import Post from './pages/postPage';
 import AllPosts from './pages/allPostsPage';
+import { mockPosts } from './components/tests/mocks/utils';
 
 // placeholder posts
 const placeholderPosts = [
-  { _id: 100, title: 'Fetching post 1', body: 'Placeholder post content' },
-  { _id: 101, title: 'Fetching post 2', body: 'This post is not real it only seems so' }
+  ...mockPosts
 ];
 
 function App() {
