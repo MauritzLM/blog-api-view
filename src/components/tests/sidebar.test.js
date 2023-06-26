@@ -4,16 +4,16 @@ import { render, screen } from "@testing-library/react";
 import Sidebar from "../sidebar";
 import { MemoryRouter } from "react-router-dom";
 
-const recentPosts = [{ _id: 1, title: "Post 1" }, { _id: 2, title: "Post 2" }, { _id: 3, title: "Post 3" }];
+import { mockPosts } from "./mocks/utils";
 
 // renders list correctly
 describe("component renders correctly", () => {
     it("list of recent posts gets rendered correctly", () => {
-        render(<MemoryRouter><Sidebar recenPosts={recentPosts} /></MemoryRouter>);
+        render(<MemoryRouter><Sidebar recentPosts={mockPosts} /></MemoryRouter>);
 
-        expect(screen.getAllByRole("listitem")).toHaveLength(3);
-        expect(screen.getByText("Post 1")).toBeInTheDocument();
-        expect(screen.getByText("Post 2")).toBeInTheDocument();
-        expect(screen.getByText("Post 3")).toBeInTheDocument();
+        expect(screen.getAllByRole("listitem")).toHaveLength(mockPosts.length);
+        expect(screen.getByText("Blog Post 1")).toBeInTheDocument();
+        expect(screen.getByText("Blog Post 2")).toBeInTheDocument();
+        expect(screen.getByText("Blog Post 3")).toBeInTheDocument();
     });
 });
