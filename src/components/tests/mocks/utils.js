@@ -6,7 +6,8 @@ export const mockPosts = [{
     author: "Gandalf",
     body: "I write to you on fith day of the year 3434. \n It has come to my attention...",
     published: true,
-    comments: [],
+    comments: [{ _id: 101, author: "Mo", body: "Cool post!", timestamp: "2023-06-07T15:12:58.888+00:00" },
+    { _id: 102, author: "Ryu", body: "this is good", timestamp: "2023-06-07T15:21:58.888+00:00" }],
     date: "2023-06-07T14:22:58.888+00:00"
 }, {
     _id: 10,
