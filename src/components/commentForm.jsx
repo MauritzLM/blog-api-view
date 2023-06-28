@@ -8,12 +8,11 @@ export default function CommentForm({ id, commentAdded, setCommentAdded }) {
     const [commentFormValues, setCommentFormValues] = useState({ ...initialFormValues });
 
     // form error messages
-
     const [authorError, setAuthorError] = useState("");
     const [bodyError, setBodyError] = useState("");
     const [questionError, setQuestionError] = useState("");
 
-    // handle new comment post*
+    // handle new comment post
     async function handleNewComment(event) {
         event.preventDefault();
 
@@ -63,25 +62,25 @@ export default function CommentForm({ id, commentAdded, setCommentAdded }) {
     };
     return (
         <>
-            <form className="comment-form" method="post" onSubmit={(e) => handleNewComment(e)} noValidate>
+            <form data-testid="commentForm" className="comment-form" method="post" onSubmit={(e) => handleNewComment(e)} noValidate>
                 <h3>Add new Comment</h3>
 
                 <label htmlFor="commentAuthor">enter your name
-                    <input type="text" name="commentAuthor" value={commentFormValues.author} onChange={(e) => setCommentFormValues({ ...commentFormValues, author: e.target.value })} />
+                    <input data-testid="author" type="text" name="commentAuthor" value={commentFormValues.author} onChange={(e) => setCommentFormValues({ ...commentFormValues, author: e.target.value })} />
                     <span>{commentFormValues.author ? "" : authorError}</span>
                 </label>
 
                 <label htmlFor="commentBody">Your comment
-                    <textarea name="commentBody" value={commentFormValues.body} onChange={(e) => setCommentFormValues({ ...commentFormValues, body: e.target.value })} />
+                    <textarea data-testid="body" name="commentBody" value={commentFormValues.body} onChange={(e) => setCommentFormValues({ ...commentFormValues, body: e.target.value })} />
                     <span>{commentFormValues.body.length < 10 ? bodyError : ""}</span>
                 </label>
 
                 <label htmlFor="securityQuestion">What is 13 - 8 ? (security question)
-                    <input type="text" name="securityQuestion" value={commentFormValues.question} onChange={(e) => setCommentFormValues({ ...commentFormValues, question: e.target.value })} />
+                    <input data-testid="question" type="text" name="securityQuestion" value={commentFormValues.question} onChange={(e) => setCommentFormValues({ ...commentFormValues, question: e.target.value })} />
                     <span>{questionError}</span>
                 </label>
 
-                <button>submit</button>
+                <button data-testid="submit">submit</button>
             </form>
         </>
     )

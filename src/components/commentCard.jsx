@@ -6,7 +6,7 @@ dayjs.extend(relativeTime);
 // card to display a comment
 export default function CommentCard({ comment }) {
     return (
-        <div className="comment-card">
+        <div data-testid="comment" className="comment-card">
             {parse(`<p>${comment.body}</p>`)}
             <p>- {comment.author}</p>
             <p>{dayjs(comment.timestamp).fromNow()}</p>
