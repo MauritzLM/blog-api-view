@@ -63,7 +63,7 @@ export default function CommentForm({ id, commentAdded, setCommentAdded }) {
     return (
         <>
             <form data-testid="commentForm" className="comment-form" method="post" onSubmit={(e) => handleNewComment(e)} noValidate>
-                <h3>Add new Comment</h3>
+                <h3>Post new Comment</h3>
 
                 <label htmlFor="commentAuthor">enter your name
                     <input data-testid="author" type="text" name="commentAuthor" value={commentFormValues.author} onChange={(e) => setCommentFormValues({ ...commentFormValues, author: e.target.value })} />
@@ -80,7 +80,7 @@ export default function CommentForm({ id, commentAdded, setCommentAdded }) {
                     <span data-testid="errormsg">{questionError}</span>
                 </label>
 
-                <button data-testid="submit">submit</button>
+                <button data-testid="submit">post comment</button>
             </form>
         </>
     )

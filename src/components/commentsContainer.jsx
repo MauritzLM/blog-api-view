@@ -9,6 +9,8 @@ dayjs.extend(relativeTime);
 export default function CommentsContainer({ postComments, commentAdded, setCommentAdded }) {
     const { id } = useParams();
 
+    // add state to hide form
+
     return (
         <>
             <section className="comments-section">
