@@ -10,13 +10,10 @@ html {
 body {
   font-size: 1.6rem;
   margin: 0;
+  background-color: #fdfdfa;
+  color: #1d4461;
 }
 
-#root {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
 
 /* Typography */
 h1,
@@ -26,19 +23,108 @@ h4 {
   font-family: 'Montserrat', sans-serif;
 }
 
+h1 {
+  text-transform: capitalize;
+}
+
+aside h3 {
+  margin-top: 0;
+
+}
+
+.comments-section h3 {
+  margin-bottom: 0;
+}
+
+p {
+  letter-spacing: .4px;
+}
+
+a {
+  text-decoration: none;
+  border-bottom: 1px solid #234E70;
+  padding-bottom: .3em;
+  color: #4783ad;
+  font-weight: 500;
+}
+
+
+ul a,
+header a,
+aside a {
+  border: none;
+  padding: 0;
+}
+
+a:hover {
+  border-bottom: none;
+  color: #234E70;
+}
+
+.author {
+  font-weight: bold;
+}
+
+/* ul {
+  padding-left: .5em;
+} */
+
+/* header */
+header {
+  text-align: center;
+}
+
+header a {
+  font-size: 2.2rem;
+  display: block;
+  text-align: left;
+  padding-left: .5em;
+}
+
 /* main */
 main {
   display: flex;
   flex-direction: column;
   gap: 2em;
-  max-width: 700px;
-  padding: .5em;
+  max-width: 1000px;
+  padding: 1em;
 }
 
 /* sidebar */
 aside {
+  padding: 1em;
+  /* border: 2px solid #1d43618e; */
+  font-size: 1.8rem;
+}
+
+aside h3 span {
   padding: .5em;
-  border: 1px solid;
+  background-color: #a6c8d8;
+  border-radius: 5px;
+}
+
+aside ul {
+  display: flex;
+  flex-direction: column;
+  gap: .8em;
+  list-style-type: none;
+  padding-left: 0;
+  margin-top: 2em;
+}
+
+.oldposts {
+  border-bottom: 1px solid #234E70;
+  padding-bottom: .3em;
+}
+
+/* all posts list */
+.post-list {
+  list-style-type: decimal;
+  padding-left: 1em;
+}
+
+.post-list p {
+  margin-top: .4em;
 }
 
 /* comments */
@@ -51,22 +137,47 @@ aside {
 .comments-container {
   display: flex;
   flex-direction: column;
-  gap: .5em;
+  gap: 1em;
 }
 
 .comment-card {
-  padding: .5em;
-  border: 1px solid;
+  padding: 1em;
+  background-color: #f7f6e7;
+  max-width: 550px;
+}
+
+.comment-card .comment-date {
+  font-style: italic;
 }
 
 /* new comment form */
 .comment-form {
   display: flex;
   flex-direction: column;
-  width: 300px;
+  max-width: 570px;
   gap: 1em;
-  border: 1px solid;
-  padding: .5em;
+  /* border: 1px solid; */
+  padding: 1em;
+  /* background-color: #FBF8BE; */
+}
+
+.comment-form input,
+.comment-form textarea {
+  padding: .2em;
+  font: inherit;
+  border: none;
+  margin-top: .2em;
+  background-color: #f7f6e7;
+}
+
+.comment-form button {
+  font: inherit;
+  padding: .4em .8em .5em .8em;
+  border: none;
+  cursor: pointer;
+  background-color: #234E70;
+  color: white;
+
 }
 
 .comment-form label {
@@ -74,8 +185,34 @@ aside {
   flex-direction: column;
 }
 
-.comment-form button {
-  width: 50%;
-}
-
 /* Media queries */
+@media screen and (min-width: 750px) {
+  #root {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    flex-direction: column;
+  }
+
+  header a {
+    position: absolute;
+    top: .4em;
+    left: .4em;
+  }
+
+  main {
+    display: grid;
+    grid-template-areas: "article aside";
+    grid-template-columns: 2fr 1fr;
+  }
+
+  article {
+    grid-area: article;
+    margin-top: 2em;
+  }
+
+  aside {
+    grid-area: aside;
+  }
+}
