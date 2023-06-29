@@ -28,7 +28,7 @@ export default function AllPosts() {
     const postsDisplay = posts?.map(post => {
         return <li key={post._id}>
             <Link to={`/posts/${post._id}`}>{post.title}</Link>
-            <p >by {post.author}</p>
+            <p >by <span className="author">{post.author}</span></p>
         </li>
     });
 
@@ -39,8 +39,8 @@ export default function AllPosts() {
             </header>
             <main>
                 <div>
-                    <h2>List of all posts</h2>
-                    <ul>{postsDisplay}</ul>
+                    <h2>All articles</h2>
+                    <ul className="post-list">{postsDisplay}</ul>
                 </div>
             </main>
         </>

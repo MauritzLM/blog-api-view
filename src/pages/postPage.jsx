@@ -43,8 +43,8 @@ export default function Post({ recentPosts }) {
             <main>
                 <article>
                     <h1 data-testid="title">{post ? post.title : 'Fetching title'} </h1>
-                    <p>written by {post ? post.author : 'Fetching author'}</p>
-                    <p>{post ? dayjs(post.date).format("D MMM YYYY") : 'Fetching date'}</p>
+                    <p>written by <span className="author">{post ? post.author : 'Fetching author'}</span></p>
+                    <p>published {post ? dayjs(post.date).format("D MMM YYYY") : 'Fetching date'}</p>
 
                     {post.body?.split("\n").map((paragraph, index) => {
                         return parse(`<p key=${index + 1}>${paragraph}</p>`)

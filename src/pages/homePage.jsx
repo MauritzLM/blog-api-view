@@ -16,15 +16,19 @@ export default function Home({ recentPosts }) {
             <main>
 
                 <div>
-                    <h2>{mostRecentPost.title}</h2>
-                    <p>{mostRecentPost.body.split("\n")[0]}</p>
-                    <Link to={`/posts/${mostRecentPost._id}`}>Continue reading</Link>
-                </div>
+                    <div>
+                        <h2>{mostRecentPost.title}</h2>
+                        <p>by <span className="author">{mostRecentPost.author}</span></p>
+                        <p>{mostRecentPost.body.split("\n")[0]}</p>
+                        <Link to={`/posts/${mostRecentPost._id}`}>Continue reading</Link>
+                    </div>
 
-                <div>
-                    <h2>{secondMostRecentPost.title}</h2>
-                    <p>{secondMostRecentPost.body.split("\n")[0]}</p>
-                    <Link to={`/posts/${secondMostRecentPost._id}`}>Continue reading</Link>
+                    <div>
+                        <h2>{secondMostRecentPost.title}</h2>
+                        <p>by <span className="author">{mostRecentPost.author}</span></p>
+                        <p>{secondMostRecentPost.body.split("\n")[0]}</p>
+                        <Link to={`/posts/${secondMostRecentPost._id}`}>Continue reading</Link>
+                    </div>
                 </div>
                 <Sidebar recentPosts={recentPosts} />
 
