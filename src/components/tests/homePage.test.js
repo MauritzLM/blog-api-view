@@ -18,4 +18,13 @@ describe("rendering of home page", () => {
         expect(headings[2]).toHaveTextContent(/Blog Post 2/i);
 
     });
+
+    it("sidebar renders correctly in homepage", async () => {
+        render(<MemoryRouter><Home recentPosts={mockPosts} /></MemoryRouter>);
+
+        const recentPostsList = await screen.findAllByRole("listitem");
+
+        expect(recentPostsList).toHaveLength(mockPosts.length);
+    });
+
 });
