@@ -7,14 +7,10 @@ import Post from './pages/postPage';
 import AllPosts from './pages/allPostsPage';
 import { mockPosts } from './components/tests/mocks/utils';
 
-// placeholder posts
-const placeholderPosts = [
-  ...mockPosts
-];
 
 function App() {
 
-  const [recentPosts, setRecentPosts] = useState([...placeholderPosts]);
+  const [recentPosts, setRecentPosts] = useState([...mockPosts]);
 
   // get 5 most recent posts
   useEffect(() => {

@@ -3,9 +3,6 @@ import "@testing-library/jest-dom";
 import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import CommentForm from "../commentForm";
 
-//  test form inputs (values)
-//  form errors display
-//  form post request calls function
 const setCommentAdded = jest.fn();
 
 describe("form functionality", () => {
@@ -26,15 +23,19 @@ describe("form functionality", () => {
         expect(questionInput).toHaveValue("4");
     });
 
-    // it("submitting form", () => {
-    //     // const handleNewComment = jest.fn();
+    // it("submitting form with errors", async () => {
+
     //     render(<CommentForm id={5} commentAdded={0} setCommentAdded={setCommentAdded} />);
 
     //     const button = screen.getByTestId("submit");
 
     //     fireEvent.click(button);
 
-    //     // expect(handleNewComment).toHaveBeenCalled();
-    //     expect(setCommentAdded).toHaveBeenCalled();
+    //     const errors = await screen.findAllByTestId("errormsg");
+
+    //     expect(errors[0]).toHaveTextContent("please enter a name")
+    //     expect(errors[1]).toHaveTextContent("please provide a comment")
+    //     expect(errors[2]).toHaveTextContent("wrong answer")
+
     // });
 });
