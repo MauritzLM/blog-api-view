@@ -67,17 +67,17 @@ export default function CommentForm({ id, commentAdded, setCommentAdded }) {
 
                 <label htmlFor="commentAuthor">enter your name
                     <input data-testid="author" type="text" name="commentAuthor" value={commentFormValues.author} onChange={(e) => setCommentFormValues({ ...commentFormValues, author: e.target.value })} />
-                    <span>{commentFormValues.author ? "" : authorError}</span>
+                    <span data-testid="errormsg">{commentFormValues.author ? "" : authorError}</span>
                 </label>
 
                 <label htmlFor="commentBody">Your comment
                     <textarea data-testid="body" name="commentBody" value={commentFormValues.body} onChange={(e) => setCommentFormValues({ ...commentFormValues, body: e.target.value })} />
-                    <span>{commentFormValues.body.length < 10 ? bodyError : ""}</span>
+                    <span data-testid="errormsg">{commentFormValues.body.length < 10 ? bodyError : ""}</span>
                 </label>
 
                 <label htmlFor="securityQuestion">What is 13 - 8 ? (security question)
                     <input data-testid="question" type="text" name="securityQuestion" value={commentFormValues.question} onChange={(e) => setCommentFormValues({ ...commentFormValues, question: e.target.value })} />
-                    <span>{questionError}</span>
+                    <span data-testid="errormsg">{questionError}</span>
                 </label>
 
                 <button data-testid="submit">submit</button>
