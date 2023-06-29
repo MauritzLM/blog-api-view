@@ -26,3 +26,12 @@ export const mockPosts = [{
     comments: [],
     date: "2023-06-08T14:25:58.888+00:00"
 }];
+
+// form errors
+export const formErrors = {
+    errors: [
+        { path: "commentAuthor", msg: "please enter a name" },
+        { path: "commentBody", msg: "please provide a comment" },
+        { path: "securityQuestion", msg: "wrong answer" }
+    ]
+};
