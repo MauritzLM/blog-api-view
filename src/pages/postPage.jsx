@@ -1,5 +1,5 @@
 import Sidebar from "../components/sidebar"
-import CommentsContainer from "../components/comments"
+import CommentsContainer from "../components/commentsContainer"
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import parse from "html-react-parser";
@@ -42,7 +42,7 @@ export default function Post({ recentPosts }) {
             </header>
             <main>
                 <article>
-                    <h1>{post ? post.title : 'Fetching title'} </h1>
+                    <h1 data-testid="title">{post ? post.title : 'Fetching title'} </h1>
                     <p>written by {post ? post.author : 'Fetching author'}</p>
                     <p>{post ? dayjs(post.date).format("D MMM YYYY") : 'Fetching date'}</p>
 
@@ -51,7 +51,7 @@ export default function Post({ recentPosts }) {
                     })}
                     <CommentsContainer postComments={post.comments} commentAdded={commentAdded} setCommentAdded={setCommentAdded} />
                 </article>
-                <Sidebar recenPosts={recentPosts} />
+                <Sidebar recentPosts={recentPosts} />
             </main>
         </>
     )

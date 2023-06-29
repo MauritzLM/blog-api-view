@@ -26,7 +26,7 @@ export default function Home({ recentPosts }) {
                     <p>{secondMostRecentPost.body.split("\n")[0]}</p>
                     <Link to={`/posts/${secondMostRecentPost._id}`}>Continue reading</Link>
                 </div>
-                <Sidebar recenPosts={recentPosts} />
+                <Sidebar recentPosts={recentPosts} />
 
             </main>
         </>
