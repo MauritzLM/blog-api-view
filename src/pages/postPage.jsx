@@ -11,6 +11,19 @@ export default function Post({ recentPosts }) {
 
     const [commentAdded, setCommentAdded] = useState(0);
 
+    // add state to hide form
+    const [showForm, setShowForm] = useState(false);
+
+    // handle post comment button
+    function handleShowForm() {
+        setShowForm(true);
+    };
+
+    // handle hide form
+    function handleHideForm() {
+        setShowForm(false);
+    };
+
     // fetch post by id
     useEffect(() => {
         async function getPost() {
@@ -21,7 +34,11 @@ export default function Post({ recentPosts }) {
 
                 const post = await response.json();
 
+                // save post in state
                 setPost({ ...post });
+
+                // hide comment form
+                setShowForm(false);
             }
             catch (error) {
                 console.log(error)
@@ -34,6 +51,11 @@ export default function Post({ recentPosts }) {
         getPost();
     }, [commentAdded, id]);
 
+    // add scroll to bottom functionality*
+    // useEffect(() => {
+    //     // 👇️ scroll to bottom every time messages change
+    //     showForm?.scrollIntoView({ behavior: 'smooth' });
+    // }, [showForm]);
 
     return (
         <>
@@ -44,12 +66,12 @@ export default function Post({ recentPosts }) {
                 <article>
                     <h1 data-testid="title">{post ? post.title : 'Fetching title'} </h1>
                     <p>written by <span className="author">{post ? post.author : 'Fetching author'}</span></p>
-                    <p>published {post ? dayjs(post.date).format("D MMM YYYY") : 'Fetching date'}</p>
+                    <p className="date">published {post ? dayjs(post.date).format("D MMM YYYY") : 'Fetching date'}</p>
 
                     {post.body?.split("\n").map((paragraph, index) => {
                         return parse(`<p key=${index + 1}>${paragraph}</p>`)
                     })}
-                    <CommentsContainer postComments={post.comments} commentAdded={commentAdded} setCommentAdded={setCommentAdded} />
+                    <CommentsContainer postComments={post.comments} commentAdded={commentAdded} setCommentAdded={setCommentAdded} showForm={showForm} handleShowForm={handleShowForm} handleHideForm={handleHideForm} />
                 </article>
                 <Sidebar recentPosts={recentPosts} />
             </main>
