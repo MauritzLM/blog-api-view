@@ -9,7 +9,7 @@ export default function CommentCard({ comment }) {
         <div data-testid="comment" className="comment-card">
             {parse(`<p>${comment.body}</p>`)}
             <p>- <span className="author">{comment.author}</span></p>
-            <p className="comment-date">{dayjs(comment.timestamp).fromNow()}</p>
+            <p className="date">{dayjs(comment.timestamp).fromNow()}</p>
         </div>
     )
 };
