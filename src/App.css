@@ -112,6 +112,10 @@ main {
   margin-top: 1em;
 }
 
+article {
+  margin-bottom: 1.5em;
+}
+
 /* sidebar */
 aside {
   padding: 1em;
@@ -176,12 +180,12 @@ aside ul {
 .hide-commentform {
   position: absolute;
   right: 1em;
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0);
   color: #568fbb;
 }
 
 .show-commentform {
-  top: 1em;
+  bottom: -2em;
 }
 
 .hide-commentform {
@@ -224,6 +228,11 @@ aside ul {
 .comment-form label {
   display: flex;
   flex-direction: column;
+}
+
+.comment-form label span {
+  color: rgb(180, 82, 82);
+  margin-top: .3em;
 }
 
 /* Media queries */
