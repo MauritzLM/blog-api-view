@@ -52,10 +52,6 @@ export default function Post({ recentPosts }) {
     }, [commentAdded, id]);
 
     // add scroll to bottom functionality*
-    // useEffect(() => {
-    //     // 👇️ scroll to bottom every time messages change
-    //     showForm?.scrollIntoView({ behavior: 'smooth' });
-    // }, [showForm]);
 
     return (
         <>
