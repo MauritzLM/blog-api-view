@@ -5,12 +5,10 @@ import Home from './pages/homePage';
 import Error from './pages/errorPage';
 import Post from './pages/postPage';
 import AllPosts from './pages/allPostsPage';
-import { mockPosts } from './components/tests/mocks/utils';
-
 
 function App() {
 
-  const [recentPosts, setRecentPosts] = useState([...mockPosts]);
+  const [recentPosts, setRecentPosts] = useState([]);
 
   // get 5 most recent posts
   useEffect(() => {
