@@ -2,7 +2,6 @@ import { useParams } from "react-router-dom"
 import dayjs from "dayjs";
 import CommentForm from "./commentForm";
 import CommentCard from "./commentCard";
-import { useState } from "react";
 const relativeTime = require('dayjs/plugin/relativeTime');
 dayjs.extend(relativeTime);
 
@@ -18,7 +17,7 @@ export default function CommentsContainer({ postComments, commentAdded, setComme
                     <div className="comments-container">{postComments?.map(comment => {
                         return <CommentCard comment={comment} key={comment._id} />
                     })}</div>
-                    <button className="hide-commentform" onClick={() => handleHideForm()}>Hide form</button>
+                    <button data-testid="hideform" className="hide-commentform" onClick={() => handleHideForm()}>Hide form</button>
                     <CommentForm id={id} commentAdded={commentAdded} setCommentAdded={setCommentAdded} />
                 </section>
             </>
@@ -31,7 +30,7 @@ export default function CommentsContainer({ postComments, commentAdded, setComme
                     <div className="comments-container">{postComments?.map(comment => {
                         return <CommentCard comment={comment} key={comment._id} />
                     })}</div>
-                    <button className="show-commentform" onClick={() => handleShowForm()}>Post a comment</button>
+                    <button data-testid="showform" className="show-commentform" onClick={() => handleShowForm()}>Post a comment</button>
                 </section>
             </>
         )
